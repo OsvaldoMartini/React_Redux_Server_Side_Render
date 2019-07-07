@@ -46,7 +46,6 @@
     "webpack-node-externals": "1.6.0"
   },
   "devDependencies": {
-    "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "css-loader": "^2.1.1",
     "redux-devtools": "^3.5.0",
     "redux-devtools-dock-monitor": "^1.1.3",
