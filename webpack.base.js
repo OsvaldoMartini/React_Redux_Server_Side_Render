@@ -27,11 +27,7 @@ module.exports = {
       },
       {
         loader: ExtractTextPlugin.extract({
-          loaders: [
-            require.resolve('style-loader'),
-            require.resolve('css-loader'),
-            require.resolve('sass-loader')
-          ]
+          loader: 'css-loader'
         }),
         test: /\.css$/
       }
