@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
   // Tell webpack to run babel on every file it runs through
@@ -34,6 +35,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV), //When React Boost Up it's going to look for this variable on Windows Scope
       'process.env.DEBUG': JSON.stringify(process.env.DEBUG)
