@@ -4,9 +4,9 @@
 const express = require('express');
 
 const matchRoutes = require('react-router-config');
-import proxy from 'express-http-proxy';
-import Routes from './client/Routes';
+const proxy = require('express-http-proxy');
 
+import Routes from './client/Routes';
 import renderer from './helpers/renderer';
 
 // Two Ways Create Store
