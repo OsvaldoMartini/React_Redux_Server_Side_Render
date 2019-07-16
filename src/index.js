@@ -1,6 +1,7 @@
 //Isomorphic Java Script / Universal Javascript
-import 'babel-polyfill';
-import express from 'express';
+//import 'babel-polyfill';
+//import express from 'express';
+const express = require('express');
 
 import { matchRoutes } from 'react-router-config';
 import proxy from 'express-http-proxy';
