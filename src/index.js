@@ -1,16 +1,16 @@
 //Isomorphic Java Script / Universal Javascript
-//import 'babel-polyfill';
+require('babel-polyfill');
 //import express from 'express';
 const express = require('express');
 
 const matchRoutes = require('react-router-config');
 const proxy = require('express-http-proxy');
 
-import Routes from './client/Routes';
-import renderer from './helpers/renderer';
+const Routes = require('./client/Routes');
+const renderer = './helpers/renderer';
 
 // Two Ways Create Store
-import createStore from './helpers/createStore';
+const createStore = './helpers/createStore';
 
 // To Be used with DevTools
 //import configureStore from './store/configureStore';
