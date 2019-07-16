@@ -3,7 +3,7 @@
 //import express from 'express';
 const express = require('express');
 
-import { matchRoutes } from 'react-router-config';
+const matchRoutes = require('react-router-config');
 import proxy from 'express-http-proxy';
 import Routes from './client/Routes';
 
