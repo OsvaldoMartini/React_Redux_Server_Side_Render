@@ -12,9 +12,7 @@
 		"build": "SET NODE_ENV=production && npm-run-all --parallel dev:*",
 		"dev:server": "nodemon --watch build --exec node build/bundle.js",
 		"dev:build-server": "webpack --config webpack.server.js --watch",
-		"dev:build-client": "webpack --config webpack.client.js --watch",
-    "start": "node build/bundle.js",
-    "heroku-postbuild": "node build/bundle.js" 
+		"dev:build-client": "webpack --config webpack.client.js --watch"
  	},
 	"author": "",
 	"license": "ISC",
