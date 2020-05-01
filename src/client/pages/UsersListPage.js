@@ -13,7 +13,7 @@ class UsersList extends Component {
     return (
       this.props.users &&
       this.props.users.map((user) => {
-        return <li key={user.id}>{user.name}</li>;
+        return <li key={user.id}>{user.candidateEmail}</li>;
       })
     );
   }

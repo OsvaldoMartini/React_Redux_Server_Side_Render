@@ -7,8 +7,12 @@ import reducers from '../client/reducers'; //Getting all the Combined Reducers f
 
 export default (req) => {
   const axiosInstance = axios.create({
-    baseURL: 'http://server-profile.herokuapp.com',
-    headers: { cookie: req.get('cookie') || '' }
+    baseURL: 'http://localhost:9095',
+    headers: {
+      cookie: req.get('cookie') || '',
+      Authorization: 'cs_By_Pass',
+      reportUiUserName: 'osvaldo.martini@gmail.com'
+    }
   });
 
   const store = createStore(

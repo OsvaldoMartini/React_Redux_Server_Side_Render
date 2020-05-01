@@ -9,8 +9,8 @@ class AdminsListPage extends Component {
   }
 
   renderAdmins() {
-    return this.props.admins.map(admin => {
-      return <li key={admin.id}>{admin.name}</li>;
+    return this.props.admins.map((admin) => {
+      return <li key={admin.id}>{admin.candidateEmail}</li>;
     });
   }
 
@@ -29,9 +29,8 @@ function mapStateToProps({ admins }) {
 }
 
 export default {
-  component: connect(
-    mapStateToProps,
-    { fetchAdmins }
-  )(requireAuth(AdminsListPage)),
+  component: connect(mapStateToProps, { fetchAdmins })(
+    requireAuth(AdminsListPage)
+  ),
   loadData: ({ dispatch }) => dispatch(fetchAdmins())
 };

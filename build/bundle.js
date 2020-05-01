@@ -109,7 +109,7 @@ var fetchUsers = exports.fetchUsers = function fetchUsers() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return api.get('/users');
+              return api.get('/api/profile/all');
 
             case 2:
               res = _context.sent;
@@ -155,12 +155,14 @@ var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
               res = _context2.sent;
 
 
+              console.log('fetchCurrentUser:', res);
+
               dispatch({
                 type: FETCH_CURRENT_USER,
                 payload: res
               });
 
-            case 4:
+            case 5:
             case 'end':
               return _context2.stop();
           }
@@ -243,7 +245,7 @@ var fetchAdmins = exports.fetchAdmins = function fetchAdmins() {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return api.get('/admins');
+              return api.get('/api/profile/all');
 
             case 2:
               res = _context4.sent;
@@ -346,7 +348,7 @@ exports.default = [_extends({}, _App2.default, { //Defining the Header
     //component: Home,
     exact: true
   }), _extends({}, _UsersListPage2.default, {
-    path: '/users'
+    path: '/profiles'
     //component: UsersListPage
   }), {
     path: '/Hi',
@@ -418,8 +420,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (req) {
   var axiosInstance = _axios2.default.create({
-    baseURL: 'http://server-profile.herokuapp.com',
-    headers: { cookie: req.get('cookie') || '' }
+    baseURL: 'http://localhost:9095',
+    headers: {
+      cookie: req.get('cookie') || '',
+      Authorization: 'cs_By_Pass',
+      reportUiUserName: 'osvaldo.martini@gmail.com'
+    }
   });
 
   var store = (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(axiosInstance)));
@@ -591,7 +597,7 @@ var Header = function Header(_ref) {
     'Logout'
   ) : _react2.default.createElement(
     'a',
-    { href: '/api/auth/google' },
+    { href: '/api/api/auth/google' },
     'Login'
   );
 
@@ -614,8 +620,8 @@ var Header = function Header(_ref) {
           null,
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/users' },
-            'Users'
+            { to: '/profiles' },
+            'Profiles'
           )
         ),
         _react2.default.createElement(
@@ -777,7 +783,7 @@ var AdminsListPage = function (_Component) {
         return _react2.default.createElement(
           'li',
           { key: admin.id },
-          admin.name
+          admin.candidateEmail
         );
       });
     }
@@ -945,11 +951,11 @@ var UsersList = function (_Component) {
   }, {
     key: 'renderUsers',
     value: function renderUsers() {
-      return this.props.users.map(function (user) {
+      return this.props.users && this.props.users.map(function (user) {
         return _react2.default.createElement(
           'li',
           { key: user.id },
-          user.name
+          user.candidateEmail
         );
       });
     }
@@ -1202,13 +1208,15 @@ var app = (0, _express2.default)();
 // Set up as Middleware Before all other Middlewares
 // Any route whatsoever or any request that tries toa ccess a route '/api'
 // Will be automatically sent off o this domain
-app.use('/api', (0, _expressHttpProxy2.default)('https://server-profile.herokuapp.com/', {
+app.use('/api', (0, _expressHttpProxy2.default)('http://localhost:9095/', {
   proxyReqOptDecorator: function proxyReqOptDecorator(opts) {
     // Just Set this for the Current Course in this App
     // Just to give as easy way to handle with Google Auth process
     // And don't run some security erros with the Google waterflow (that's all)
     // This say's after the Login process forward me back to "localhost:3000"
-    opts.headers['x-forwarded-host'] = 'https://server-profile.herokuapp.com/';
+    opts.headers['x-forwarded-host'] = 'localhost:3000';
+    opts.headers['Authorization'] = 'cs_By_Pass';
+    opts.headers['reportUiUserName'] = 'osvaldo.martini@gmail.com';
     return opts;
   }
 }));
@@ -1289,12 +1297,6 @@ app.get('*', function (req, res) {
 });
 
 app.listen(port, function () {
-  console.log('listening on port ' + port);
-  console.log('listening on port ' + port);
-  console.log('listening on port ' + port);
-  console.log('listening on port ' + port);
-  console.log('listening on port ' + port);
-  console.log('listening on port ' + port);
   console.log('listening on port ' + port);
 });
 

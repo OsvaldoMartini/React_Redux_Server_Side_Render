@@ -8,7 +8,7 @@ import axios from 'axios';
 */
 export const FETCH_USERS = 'fetch_users';
 export const fetchUsers = () => async (dispatch, getState, api) => {
-  const res = await api.get('/profile/all');
+  const res = await api.get('/api/profile/all');
 
   dispatch({
     type: FETCH_USERS,
@@ -70,7 +70,7 @@ export const fetchImages = () => async (dispatch) => {
 */
 export const FETCH_ADMINS = 'fetch_admins';
 export const fetchAdmins = () => async (dispatch, getState, api) => {
-  const res = await api.get('/profile/all');
+  const res = await api.get('/api/profile/all');
 
   dispatch({
     type: FETCH_ADMINS,

@@ -35,7 +35,7 @@ export default [
       {
         //loadData: loadData, //ES2015 Systax => Or Just Type loadData, => But end of the day it will be expanded like so 'loadData: loadData'
         ...UsersListPage,
-        path: '/users'
+        path: '/profiles'
         //component: UsersListPage
       },
       {

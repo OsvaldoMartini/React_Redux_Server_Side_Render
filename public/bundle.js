@@ -1876,7 +1876,7 @@ var fetchUsers = exports.fetchUsers = function fetchUsers() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return api.get('/users');
+              return api.get('/api/profile/all');
 
             case 2:
               res = _context.sent;
@@ -1922,12 +1922,14 @@ var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
               res = _context2.sent;
 
 
+              console.log('fetchCurrentUser:', res);
+
               dispatch({
                 type: FETCH_CURRENT_USER,
                 payload: res
               });
 
-            case 4:
+            case 5:
             case 'end':
               return _context2.stop();
           }
@@ -2010,7 +2012,7 @@ var fetchAdmins = exports.fetchAdmins = function fetchAdmins() {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return api.get('/admins');
+              return api.get('/api/profile/all');
 
             case 2:
               res = _context4.sent;
@@ -8070,7 +8072,7 @@ exports.default = [_extends({}, _App2.default, { //Defining the Header
     //component: Home,
     exact: true
   }), _extends({}, _UsersListPage2.default, {
-    path: '/users'
+    path: '/profiles'
     //component: UsersListPage
   }), {
     path: '/Hi',
@@ -9173,7 +9175,7 @@ var Header = function Header(_ref) {
     'Logout'
   ) : _react2.default.createElement(
     'a',
-    { href: '/api/auth/google' },
+    { href: '/api/api/auth/google' },
     'Login'
   );
 
@@ -9196,8 +9198,8 @@ var Header = function Header(_ref) {
           null,
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/users' },
-            'Users'
+            { to: '/profiles' },
+            'Profiles'
           )
         ),
         _react2.default.createElement(
@@ -9359,7 +9361,7 @@ var AdminsListPage = function (_Component) {
         return _react2.default.createElement(
           'li',
           { key: admin.id },
-          admin.name
+          admin.candidateEmail
         );
       });
     }
@@ -9527,11 +9529,11 @@ var UsersList = function (_Component) {
   }, {
     key: 'renderUsers',
     value: function renderUsers() {
-      return this.props.users.map(function (user) {
+      return this.props.users && this.props.users.map(function (user) {
         return _react2.default.createElement(
           'li',
           { key: user.id },
-          user.name
+          user.candidateEmail
         );
       });
     }

@@ -15,7 +15,7 @@ const Header = ({ auth }) => {
   const authButton = auth ? (
     <a href="/api/logout">Logout</a>
   ) : (
-    <a href="/api/auth/google">Login</a>
+    <a href="/api/api/auth/google">Login</a>
   );
 
   return (
@@ -26,7 +26,7 @@ const Header = ({ auth }) => {
         </Link>
         <ul className="right">
           <li>
-            <Link to="/users">Users</Link>
+            <Link to="/profiles">Profiles</Link>
           </li>
           <li>
             <Link to="/admins">Admins</Link>
