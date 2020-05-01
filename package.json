@@ -9,7 +9,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "SET NODE_ENV=development && npm-run-all --parallel dev:*",
-		"heroku-prebuild": "SET NODE_ENV=production && npm-run-all --parallel dev:*",
+		"build": "SET NODE_ENV=production && npm-run-all --parallel dev:*",
 		"dev:server": "nodemon --watch build --exec node build/bundle.js",
 		"dev:build-server": "webpack --config webpack.server.js --watch",
 		"dev:build-client": "webpack --config webpack.client.js --watch",
