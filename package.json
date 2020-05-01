@@ -15,7 +15,7 @@
 		"dev:build-client": "webpack --config webpack.client.js --watch",
     "start": "node server.js",
     "heroku-prebuild": "node webpack.server.js", 
-    "heroku-postbuild": "node webpack.server.js" 
+    "heroku-postbuild": "node webpack.client.js" 
  	},
 	"author": "",
 	"license": "ISC",
