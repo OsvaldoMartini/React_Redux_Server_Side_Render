@@ -11,6 +11,8 @@ import renderer from './helpers/renderer';
 // Two Ways Create Store
 import createStore from './helpers/createStore';
 
+const port = process.env.PORT || 3000; // Heroku will need the PORT environment variable
+
 // To Be used with DevTools
 //import configureStore from './store/configureStore';
 
@@ -23,13 +25,14 @@ const app = express();
 // Will be automatically sent off o this domain
 app.use(
   '/api',
-  proxy('http://react-ssr-api.herokuapp.com', {
+  proxy('https://server-profile.herokuapp.com/', {
     proxyReqOptDecorator(opts) {
       // Just Set this for the Current Course in this App
       // Just to give as easy way to handle with Google Auth process
       // And don't run some security erros with the Google waterflow (that's all)
       // This say's after the Login process forward me back to "localhost:3000"
-      opts.headers['x-forwarded-host'] = 'localhost:3000';
+      opts.headers['x-forwarded-host'] =
+        'https://server-profile.herokuapp.com/';
       return opts;
     }
   })
@@ -74,7 +77,7 @@ app.get('*', (req, res) => {
     .map(({ route }) => {
       return route.loadData ? route.loadData(store) : null;
     })
-    .map(promise => {
+    .map((promise) => {
       if (promise) {
         return new Promise((resolve, reject) => {
           // No matter what we always going to resolve the inner promise
@@ -110,8 +113,8 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('listening on port 3000');
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
 });
 
 //  Building:

@@ -418,7 +418,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (req) {
   var axiosInstance = _axios2.default.create({
-    baseURL: 'http://react-ssr-api.herokuapp.com',
+    baseURL: 'http://server-profile.herokuapp.com',
     headers: { cookie: req.get('cookie') || '' }
   });
 
@@ -1186,27 +1186,29 @@ var _createStore2 = _interopRequireDefault(_createStore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var port = process.env.PORT || 3000; // Heroku will need the PORT environment variable
+
 // To Be used with DevTools
 //import configureStore from './store/configureStore';
 
 //const express = require('express');
+
+
+// Two Ways Create Store
+//Isomorphic Java Script / Universal Javascript
 var app = (0, _express2.default)();
 
 // Above all other Middlewares low level proxy
 // Set up as Middleware Before all other Middlewares
 // Any route whatsoever or any request that tries toa ccess a route '/api'
 // Will be automatically sent off o this domain
-
-
-// Two Ways Create Store
-//Isomorphic Java Script / Universal Javascript
-app.use('/api', (0, _expressHttpProxy2.default)('http://react-ssr-api.herokuapp.com', {
+app.use('/api', (0, _expressHttpProxy2.default)('https://server-profile.herokuapp.com/', {
   proxyReqOptDecorator: function proxyReqOptDecorator(opts) {
     // Just Set this for the Current Course in this App
     // Just to give as easy way to handle with Google Auth process
     // And don't run some security erros with the Google waterflow (that's all)
     // This say's after the Login process forward me back to "localhost:3000"
-    opts.headers['x-forwarded-host'] = 'localhost:3000';
+    opts.headers['x-forwarded-host'] = 'https://server-profile.herokuapp.com/';
     return opts;
   }
 }));
@@ -1286,8 +1288,8 @@ app.get('*', function (req, res) {
   });
 });
 
-app.listen(3000, function () {
-  console.log('listening on port 3000');
+app.listen(port, function () {
+  console.log('listening on port ' + port);
 });
 
 //  Building:
