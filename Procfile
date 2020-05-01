@@ -1,3 +1,2 @@
-web=1 worker=1
+web=1 worker=01
 web: node public/bundle.js
-worker:  node build/bundle.js
