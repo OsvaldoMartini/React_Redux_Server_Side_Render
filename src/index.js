@@ -25,7 +25,7 @@ const app = express();
 // Will be automatically sent off o this domain
 app.use(
   '/api',
-  proxy('http://localhost:9095/', {
+  proxy('https://personal-profiler.herokuapp.com/', {
     proxyReqOptDecorator(opts) {
       // Just Set this for the Current Course in this App
       // Just to give as easy way to handle with Google Auth process
