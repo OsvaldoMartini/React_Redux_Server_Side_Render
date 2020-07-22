@@ -3132,7 +3132,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 */
 function isCrushed() {}
 
-if ("development " !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
+if ("production " !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__utils_warning__["a" /* default */])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
 }
 
@@ -4905,7 +4905,7 @@ module.exports = function xhrAdapter(config) {
     // For IE 8/9 CORS support
     // Only supports POST and GET calls and doesn't returns the response headers.
     // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if ("development " !== 'test' &&
+    if ("production " !== 'test' &&
         typeof window !== 'undefined' &&
         window.XDomainRequest && !('withCredentials' in request) &&
         !isURLSameOrigin(config.url)) {
@@ -17929,7 +17929,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
             'Use `PropTypes.checkPropTypes()` to call them. ' +
             'Read more at http://fb.me/use-check-prop-types'
           );
-        } else if ("development " !== 'production' && typeof console !== 'undefined') {
+        } else if ("production " !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (
@@ -40608,7 +40608,7 @@ console.log('Hi there!');
 
 var contentClientSide = function contentClientSide() {
   console.log('Rendering in Client Side');
-  console.log('Environment Prod:', "development ");
+  console.log('Environment Prod:', "production ");
 
   return _react2.default.createElement(
     _reactRedux.Provider,
