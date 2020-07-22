@@ -8,12 +8,10 @@
 	"description": "Server side rendering project",
 	"main": "index.js",
 	"scripts": {
-		"dev": "SET NODE_ENV=development && npm-run-all --parallel dev:*",
-		"build": "SET NODE_ENV=production && npm-run-all --parallel dev:*",
-		"dev:server": "nodemon --watch build --exec node build/bundle.js",
-		"dev:build-server": "webpack --config webpack.server.js --watch",
-    "dev:build-client": "webpack --config webpack.client.js --watch",
-    "start": "node build/bundle.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
  	},
 	"author": "",
 	"license": "ISC",
@@ -51,6 +49,7 @@
 		"webpack-node-externals": "1.6.0"
 	},
 	"devDependencies": {
+    "react-scripts":"1.0.11",
 		"css-loader": "^2.1.1",
 		"redux-devtools": "^3.5.0",
 		"redux-devtools-dock-monitor": "^1.1.3",
